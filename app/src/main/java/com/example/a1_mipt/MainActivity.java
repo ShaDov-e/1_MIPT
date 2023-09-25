@@ -28,14 +28,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Change the text when the button is clicked
-                textView.setText("Text Changed!");
+                textView.setText("Laba diena!!");
                 // Reset text color to the default color
                 textView.setTextColor(getResources().getColor(android.R.color.black));
                 isTextColorChanged = false;
             }
         });
-
-        // Set click listener for the change color button
         changeColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
