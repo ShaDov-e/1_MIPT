@@ -9,7 +9,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private Button button;
+    private Button changeTextButton;
+    private Button changeColorButton;
+    private boolean isTextColorChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +20,34 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize views
         textView = findViewById(R.id.textView);
-        button = findViewById(R.id.button);
+        changeTextButton = findViewById(R.id.changeTextButton);
+        changeColorButton = findViewById(R.id.changeColorButton);
 
-        // Set click listener for the button
-        button.setOnClickListener(new View.OnClickListener() {
+        // Set click listener for the change text button
+        changeTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Change the text when the button is clicked
+                textView.setText("Text Changed!");
+                // Reset text color to the default color
+                textView.setTextColor(getResources().getColor(android.R.color.black));
+                isTextColorChanged = false;
+            }
+        });
 
-                textView.setText("Laba diena!! ");
+        // Set click listener for the change color button
+        changeColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Change text color when the button is clicked
+                if (!isTextColorChanged) {
+                    textView.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+                    isTextColorChanged = true;
+                } else {
+                    // Reset text color to the default color
+                    textView.setTextColor(getResources().getColor(android.R.color.black));
+                    isTextColorChanged = false;
+                }
             }
         });
     }
